@@ -19,4 +19,7 @@ public class Configuration {
     this.numberOfFiles = 10;
     //TODO - add configuration file (textual file)
   }
+
+
+
 }

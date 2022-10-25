@@ -2,33 +2,31 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
-public interface StorageSpecification {
+public abstract class StorageSpecification {
 
-  void createRootFolder();
-  void createRootFolder(Configuration configuration);
+  private Configuration configuration=new Configuration();
 
-  void createFolderOnSpecifiedPath(String path);
-  void putFileOnSpecifiedPath(List<File> listFiles, String path);
+  abstract void createRootFolder(Configuration configuration);
+  abstract void setConfigurationSizeOfStorage(int size);
+  abstract void setConfigurationExtensions(List<String> extensions);
+  abstract void setConfigurationNumberOfFiles(int numberOfFiles);
+  abstract void createFolderOnSpecifiedPath(String path);
 
-  void deleteFileOrDirectory(String name);
-  void deleteFileOrDirectory(String name,String path);
 
-  void moveFileFromDirectoryToAnother(String fileName,String pathFrom,String pathTo);
-  void downloadFileOrDirectory(String pathFrom,String pathTo);
 
-  void renameFileOrDirectory(String path,String nameBefore,String nameAfter);
-
-  HashMap<String,FileMetadata> filesFromDirectory(String path);
-  HashMap<String,FileMetadata> filesFromChildrenDirectory(String path);
-  HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
-
-  HashMap<String,String> filesFromDirectoryExt(String path, List<String> extensions);
-  HashMap<String,String> filesFromChildrenDirectoryExt(String path,List<String> extensions);
-  HashMap<String,String> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
-
-  HashMap<String,String> filesFromDirectorySubstring(String path,String substring);
-
-  String folderNameByFileName(String nameOfFile);
-
-  List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
+  abstract void putFileOnSpecifiedPath(List<File> listFiles, String path);
+  abstract void deleteFileOrDirectory(String name);
+  abstract void deleteFileOrDirectory(String name,String path);
+  abstract void moveFileFromDirectoryToAnother(String fileName,String pathFrom,String pathTo);
+  abstract void downloadFileOrDirectory(String pathFrom,String pathTo);
+  abstract void renameFileOrDirectory(String path,String nameBefore,String nameAfter);
+  abstract HashMap<String,FileMetadata> filesFromDirectory(String path);
+  abstract HashMap<String,FileMetadata> filesFromChildrenDirectory(String path);
+  abstract HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
+  abstract HashMap<String,String> filesFromDirectoryExt(String path, List<String> extensions);
+  abstract HashMap<String,String> filesFromChildrenDirectoryExt(String path,List<String> extensions);
+  abstract HashMap<String,String> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
+  abstract HashMap<String,String> filesFromDirectorySubstring(String path,String substring);
+  abstract String folderNameByFileName(String nameOfFile);
+  abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 }
