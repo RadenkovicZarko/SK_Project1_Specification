@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class StorageSpecification {
 
-  private Configuration configuration=new Configuration();
+  private final Configuration configuration=new Configuration();
 
   abstract void createRootFolder(Configuration configuration);
   abstract void setConfigurationSizeOfStorage(int size);
