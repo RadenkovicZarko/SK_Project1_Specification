@@ -11,6 +11,7 @@ public abstract class StorageSpecification {
   private String rootFolderPath="";
 
   abstract void createRootFolder();
+
   void setConfigurationSizeOfStorage(int size)
   {
     configuration.setSize(size);
@@ -28,7 +29,7 @@ public abstract class StorageSpecification {
 
 
 
-  abstract void createFolderOnSpecifiedPath(String path);
+  abstract void createFolderOnSpecifiedPath(String path,String name);
   abstract void putFileOnSpecifiedPath(List<File> listFiles, String path);
   abstract void deleteFileOrDirectory(String name);
   abstract void deleteFileOrDirectory(String name,String path);
