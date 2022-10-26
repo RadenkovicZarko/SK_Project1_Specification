@@ -1,19 +1,34 @@
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
 
 public abstract class StorageSpecification {
 
   private final Configuration configuration=new Configuration();
+  private String rootFolderPath="";
 
   abstract void createRootFolder(Configuration configuration);
-  abstract void setConfigurationSizeOfStorage(int size);
-  abstract void setConfigurationExtensions(List<String> extensions);
-  abstract void setConfigurationNumberOfFiles(int numberOfFiles);
+  void setConfigurationSizeOfStorage(int size)
+  {
+    configuration.setSize(size);
+  }
+  void setConfigurationExtensions(List<String> extensions)
+  {
+    configuration.setAllowedExtensions(extensions);
+  }
+  void setConfigurationNumberOfFiles(int numberOfFiles)
+  {
+    configuration.setNumberOfFiles(numberOfFiles);
+  }
+
+  abstract boolean setRootFolderPathImplementation(String path);
+
+
+
   abstract void createFolderOnSpecifiedPath(String path);
-
-
-
   abstract void putFileOnSpecifiedPath(List<File> listFiles, String path);
   abstract void deleteFileOrDirectory(String name);
   abstract void deleteFileOrDirectory(String name,String path);
@@ -29,4 +44,17 @@ public abstract class StorageSpecification {
   abstract HashMap<String,String> filesFromDirectorySubstring(String path,String substring);
   abstract String folderNameByFileName(String nameOfFile);
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
+
+
+  public Configuration getConfiguration() {
+    return configuration;
+  }
+
+  public String getRootFolderPath() {
+    return rootFolderPath;
+  }
+
+  public void setRootFolderPath(String rootFolderPath) {
+    this.rootFolderPath = rootFolderPath;
+  }
 }

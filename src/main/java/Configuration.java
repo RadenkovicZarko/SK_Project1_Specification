@@ -12,11 +12,13 @@ public class Configuration {
   private int numberOfFiles;
   private List<String> allowedExtensions;
 
+
   // Default configuration
   public Configuration() {
     this.allowedExtensions = new ArrayList<>();
     this.size = 1000;
     this.numberOfFiles = 10;
+
     //TODO - add configuration file (textual file)
   }
 
