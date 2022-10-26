@@ -10,7 +10,7 @@ public abstract class StorageSpecification {
   private final Configuration configuration=new Configuration();
   private String rootFolderPath="";
 
-  abstract void createRootFolder(Configuration configuration);
+  abstract void createRootFolder();
   void setConfigurationSizeOfStorage(int size)
   {
     configuration.setSize(size);
