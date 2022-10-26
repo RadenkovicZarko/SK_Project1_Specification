@@ -24,16 +24,13 @@ public abstract class StorageSpecification {
   {
     configuration.setNumberOfFiles(numberOfFiles);
   }
-
   abstract boolean setRootFolderPathImplementation(String path);
-
-
-
-  abstract void createFolderOnSpecifiedPath(String path,String name);
-  abstract void putFileOnSpecifiedPath(List<File> listFiles, String path);
+  abstract boolean createFolderOnSpecifiedPath(String path,String name);
+  abstract boolean putFileOnSpecifiedPath(List<File> listFiles, String path); //Mozda je bolje da se prosledjuju adrese od fajlova pa onda da se na osnovu toga postavljaju fajlovi
   abstract void deleteFileOrDirectory(String name);
-  abstract void deleteFileOrDirectory(String name,String path);
+  abstract boolean deleteFileOrDirectory(String name,String path);
   abstract void moveFileFromDirectoryToAnother(String fileName,String pathFrom,String pathTo);
+
   abstract void downloadFileOrDirectory(String pathFrom,String pathTo);
   abstract void renameFileOrDirectory(String path,String nameBefore,String nameAfter);
   abstract HashMap<String,FileMetadata> filesFromDirectory(String path);
