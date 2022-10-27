@@ -4,6 +4,8 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 
 public abstract class StorageSpecification {
 
@@ -24,9 +26,9 @@ public abstract class StorageSpecification {
   {
     configuration.setNumberOfFiles(numberOfFiles);
   }
-  abstract boolean setRootFolderPathImplementation(String path);
+  abstract boolean setRootFolderPathInitialization(String path); // Da li je path root-a dobar
   abstract boolean createFolderOnSpecifiedPath(String path,String name);
-  abstract boolean putFileOnSpecifiedPath(List<String> listFiles, String path); //Proslede se putanje od fajlova i onda se u implementaciji proveravaju i traze ti fajlovi
+  abstract boolean putFilesOnSpecifiedPath(List<String> listFiles, String path); //Proslede se putanje od fajlova i onda se u implementaciji proveravaju i traze ti fajlovi
   abstract void deleteFileOrDirectory(String path);
   abstract void moveFileFromDirectoryToAnother(String filePath,String pathTo); //Putanja fajla i putanja do drugog foldera u koji treba da se sacuva
 
@@ -41,7 +43,6 @@ public abstract class StorageSpecification {
   abstract HashMap<String,String> filesFromDirectorySubstring(String path,String substring);
   abstract String folderNameByFileName(String nameOfFile);
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
-
 
   public Configuration getConfiguration() {
     return configuration;
