@@ -26,10 +26,9 @@ public abstract class StorageSpecification {
   }
   abstract boolean setRootFolderPathImplementation(String path);
   abstract boolean createFolderOnSpecifiedPath(String path,String name);
-  abstract boolean putFileOnSpecifiedPath(List<File> listFiles, String path); //Mozda je bolje da se prosledjuju adrese od fajlova pa onda da se na osnovu toga postavljaju fajlovi
-  abstract void deleteFileOrDirectory(String name);
-  abstract boolean deleteFileOrDirectory(String name,String path);
-  abstract void moveFileFromDirectoryToAnother(String fileName,String pathFrom,String pathTo);
+  abstract boolean putFileOnSpecifiedPath(List<String> listFiles, String path); //Proslede se putanje od fajlova i onda se u implementaciji proveravaju i traze ti fajlovi
+  abstract void deleteFileOrDirectory(String path);
+  abstract void moveFileFromDirectoryToAnother(String filePath,String pathTo); //Putanja fajla i putanja do drugog foldera u koji treba da se sacuva
 
   abstract void downloadFileOrDirectory(String pathFrom,String pathTo);
   abstract void renameFileOrDirectory(String path,String nameBefore,String nameAfter);
