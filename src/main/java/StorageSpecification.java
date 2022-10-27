@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import lombok.Getter;
@@ -37,10 +38,16 @@ public abstract class StorageSpecification {
   abstract HashMap<String,FileMetadata> filesFromDirectory(String path);
   abstract HashMap<String,FileMetadata> filesFromChildrenDirectory(String path);
   abstract HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
+
   abstract HashMap<String,String> filesFromDirectoryExt(String path, List<String> extensions);
   abstract HashMap<String,String> filesFromChildrenDirectoryExt(String path,List<String> extensions);
   abstract HashMap<String,String> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
+
   abstract HashMap<String,String> filesFromDirectorySubstring(String path,String substring);
+  abstract HashMap<String,String> filesFromChildrenDirectorySubstring(String path,String substring);
+  abstract HashMap<String,String> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
+
+
   abstract String folderNameByFileName(String nameOfFile);
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 
