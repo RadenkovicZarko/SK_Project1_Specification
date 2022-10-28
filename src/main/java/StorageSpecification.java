@@ -42,11 +42,12 @@ public abstract class StorageSpecification {
   abstract HashMap<String,FileMetadata> filesFromDirectoryExt(String path, List<String> extensions);
   abstract HashMap<String,FileMetadata> filesFromChildrenDirectoryExt(String path,List<String> extensions);
   abstract HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
+
   abstract HashMap<String,FileMetadata> filesFromDirectorySubstring(String path,String substring);
   abstract HashMap<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
   abstract HashMap<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
 
-  abstract String folderNameByFileName(String nameOfFile);
+  abstract String folderNameByFileName(String path,List<String> namesOfFiles);
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 
   public Configuration getConfiguration() {
