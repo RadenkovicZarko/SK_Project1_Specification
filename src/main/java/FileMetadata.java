@@ -1,12 +1,14 @@
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.File;
 import java.util.Date;
 
 @Getter
 @Setter
 
 public class FileMetadata {
+  private String absolutePath;
   private long size;
   private Date createdDate;
   private Date modifiedDate;
@@ -15,7 +17,8 @@ public class FileMetadata {
   //TODO - add more metadata
 
 
-  public FileMetadata(long size, Date createdDate, Date modifiedDate, String extensions, String name) {
+  public FileMetadata(String absolutePath, long size, Date createdDate, Date modifiedDate, String extensions, String name) {
+    this.absolutePath = absolutePath;
     this.size = size;
     this.createdDate = createdDate;
     this.modifiedDate = modifiedDate;
