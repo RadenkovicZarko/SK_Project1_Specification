@@ -2,6 +2,8 @@ import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.SortedMap;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,7 +51,14 @@ public abstract class StorageSpecification {
 
   abstract String doesDiretoryContainsFiles(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
   abstract String folderNameByFileName(String fileName);
+
+  abstract SortedMap<String,FileMetadata> sortFilesByName(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract SortedMap<String,FileMetadata> sortFilesByCreatedDate(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract SortedMap<String,FileMetadata> sortFilesBySize(HashMap<String,FileMetadata> mapa, boolean desc);
+
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
+
+
 
   public Configuration getConfiguration() {
     return configuration;
