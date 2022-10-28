@@ -47,7 +47,7 @@ public abstract class StorageSpecification {
   abstract HashMap<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
   abstract HashMap<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
 
-  abstract String folderNameByFileName(String path,List<String> namesOfFiles);
+  abstract String folderNameByFileName(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 
   public Configuration getConfiguration() {
