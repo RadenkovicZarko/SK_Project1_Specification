@@ -8,15 +8,17 @@ import java.util.Date;
 
 public class FileMetadata {
   private long size;
-  private Date date;
+  private Date createdDate;
+  private Date modifiedDate;
   private String extensions;
   private String name;
   //TODO - add more metadata
 
 
-  public FileMetadata(long size, Date date, String extensions, String name) {
+  public FileMetadata(long size, Date createdDate, Date modifiedDate, String extensions, String name) {
     this.size = size;
-    this.date = date;
+    this.createdDate = createdDate;
+    this.modifiedDate = modifiedDate;
     this.extensions = extensions;
     this.name = name;
   }
