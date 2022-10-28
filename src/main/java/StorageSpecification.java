@@ -1,8 +1,6 @@
 import java.io.File;
+import java.util.*;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.SortedMap;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,24 +35,22 @@ public abstract class StorageSpecification {
   abstract void downloadFileOrDirectory(String pathFrom,String pathTo);
   abstract void renameFileOrDirectory(String path,String nameAfter);
 
-  abstract HashMap<String,FileMetadata> filesFromDirectory(String path);
-  abstract HashMap<String,FileMetadata> filesFromChildrenDirectory(String path);
-  abstract HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
-
-  abstract HashMap<String,FileMetadata> filesFromDirectoryExt(String path, List<String> extensions);
-  abstract HashMap<String,FileMetadata> filesFromChildrenDirectoryExt(String path,List<String> extensions);
-  abstract HashMap<String,FileMetadata> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
-
-  abstract HashMap<String,FileMetadata> filesFromDirectorySubstring(String path,String substring);
-  abstract HashMap<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
-  abstract HashMap<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
+  abstract Map<String,FileMetadata> filesFromDirectory(String path);
+  abstract Map<String,FileMetadata> filesFromChildrenDirectory(String path);
+  abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
+  abstract Map<String,FileMetadata> filesFromDirectoryExt(String path, List<String> extensions);
+  abstract Map<String,FileMetadata> filesFromChildrenDirectoryExt(String path,List<String> extensions);
+  abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
+  abstract Map<String,FileMetadata> filesFromDirectorySubstring(String path,String substring);
+  abstract Map<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
+  abstract Map<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
 
   abstract String doesDiretoryContainsFiles(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
   abstract String folderNameByFileName(String fileName);
 
-  abstract SortedMap<String,FileMetadata> sortFilesByName(HashMap<String,FileMetadata> mapa, boolean desc);
-  abstract SortedMap<String,FileMetadata> sortFilesByCreatedDate(HashMap<String,FileMetadata> mapa, boolean desc);
-  abstract SortedMap<String,FileMetadata> sortFilesBySize(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesByName(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesByCreatedDate(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesBySize(HashMap<String,FileMetadata> mapa, boolean desc);
 
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 
