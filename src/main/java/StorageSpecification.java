@@ -50,7 +50,7 @@ public abstract class StorageSpecification {
   abstract Map<String,FileMetadata> sortFilesByCreatedDate(Map<String,FileMetadata> mapa, boolean desc);
   abstract Map<String,FileMetadata> sortFilesBySize(Map<String,FileMetadata> mapa, boolean desc);
 
-  abstract List<String> returnCreatedFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
+  abstract Map<String,FileMetadata> returnCreatedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
 
 
 
