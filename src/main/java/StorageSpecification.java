@@ -46,9 +46,9 @@ public abstract class StorageSpecification {
   abstract String doesDiretoryContainsFiles(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
   abstract String folderNameByFileName(String fileName);
 
-  abstract Map<String,FileMetadata> sortFilesByName(HashMap<String,FileMetadata> mapa, boolean desc);
-  abstract Map<String,FileMetadata> sortFilesByCreatedDate(HashMap<String,FileMetadata> mapa, boolean desc);
-  abstract Map<String,FileMetadata> sortFilesBySize(HashMap<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesByName(Map<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesByCreatedDate(Map<String,FileMetadata> mapa, boolean desc);
+  abstract Map<String,FileMetadata> sortFilesBySize(Map<String,FileMetadata> mapa, boolean desc);
 
   abstract List<String> returnFilesInDateInterval(String directoryName, Date fromDate, Date toDate);
 
