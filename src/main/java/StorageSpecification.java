@@ -94,11 +94,11 @@ public abstract class StorageSpecification {
     this.searchAttributes &= ~(SearchAttributes.date);
   }
 
-  public void setModificationAttribute() {
+  public void setModificationDateAttribute() {
     this.searchAttributes |= (SearchAttributes.modificationDate);
   }
 
-  public void removeModificationAttribute() {
+  public void removeModificationDateAttribute() {
     this.searchAttributes &= ~(SearchAttributes.modificationDate);
   }
 }
