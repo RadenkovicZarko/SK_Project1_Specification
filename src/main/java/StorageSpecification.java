@@ -70,5 +70,35 @@ public abstract class StorageSpecification {
     this.rootFolderPath = rootFolderPath;
   }
 
+  public void setWholePathAttribute() {
+    this.searchAttributes |= (SearchAttributes.wholePath);
+  }
 
+  public void removeWholePathAttribute() {
+    this.searchAttributes &= ~(SearchAttributes.wholePath);
+  }
+
+  public void setFileSizeAttribute() {
+    this.searchAttributes |= (SearchAttributes.fileSize);
+  }
+
+  public void removeFileSizeAttribute() {
+    this.searchAttributes &= ~(SearchAttributes.fileSize);
+  }
+
+  public void setDateAttribute() {
+    this.searchAttributes |= (SearchAttributes.date);
+  }
+
+  public void removeDateAttribute() {
+    this.searchAttributes &= ~(SearchAttributes.date);
+  }
+
+  public void setModificationAttribute() {
+    this.searchAttributes |= (SearchAttributes.modificationDate);
+  }
+
+  public void removeModificationAttribute() {
+    this.searchAttributes &= ~(SearchAttributes.modificationDate);
+  }
 }

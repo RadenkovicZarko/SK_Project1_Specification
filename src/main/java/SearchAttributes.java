@@ -9,6 +9,6 @@ public class SearchAttributes {
   final static int date = 4;
 
   // Show date of modification
-  final static int modification = 8;
+  final static int modificationDate = 8;
 
 }
