@@ -14,8 +14,6 @@ public class FileMetadata {
   private Date modifiedDate;
   private String extensions;
   private String name;
-  //TODO - add more metadata
-
 
   public FileMetadata(String absolutePath, long size, Date createdDate, Date modifiedDate, String extensions, String name) {
     this.absolutePath = absolutePath;
