@@ -10,4 +10,5 @@ public class SearchAttributes {
 
   // Show date of modification
   final static int modification = 8;
+
 }

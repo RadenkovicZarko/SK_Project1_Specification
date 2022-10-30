@@ -10,6 +10,7 @@ public abstract class StorageSpecification {
 
   private final Configuration configuration=new Configuration();
   private String rootFolderPath="";
+  private int searchAttributes=SearchAttributes.wholePath;
 
   abstract void createRootFolder();
 
@@ -36,9 +37,11 @@ public abstract class StorageSpecification {
   abstract Map<String,FileMetadata> filesFromDirectory(String path);
   abstract Map<String,FileMetadata> filesFromChildrenDirectory(String path);
   abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
+
   abstract Map<String,FileMetadata> filesFromDirectoryExt(String path, List<String> extensions);
   abstract Map<String,FileMetadata> filesFromChildrenDirectoryExt(String path,List<String> extensions);
   abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
+
   abstract Map<String,FileMetadata> filesFromDirectorySubstring(String path,String substring);
   abstract Map<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
   abstract Map<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
@@ -66,4 +69,6 @@ public abstract class StorageSpecification {
   public void setRootFolderPath(String rootFolderPath) {
     this.rootFolderPath = rootFolderPath;
   }
+
+
 }
