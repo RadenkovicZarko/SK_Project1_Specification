@@ -49,14 +49,62 @@ public abstract class StorageSpecification {
   abstract String doesDirectoryContainFiles(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
   abstract String folderNameByFileName(String fileName);
 
-  abstract Map<String,FileMetadata> sortFilesByName(Map<String,FileMetadata> mapa, boolean desc);
-  abstract Map<String,FileMetadata> sortFilesByCreatedDate(Map<String,FileMetadata> mapa, boolean desc);
-  abstract Map<String,FileMetadata> sortFilesBySize(Map<String,FileMetadata> mapa, boolean desc);
-
   abstract Map<String,FileMetadata> returnCreatedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
   abstract Map<String,FileMetadata> returnModifiedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
 
+  public Map<String, FileMetadata> sortFilesByName(Map<String, FileMetadata> hashMap, boolean desc) {
+    List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
+    arrayList.sort((o1, o2) -> {
+      FileMetadata fm1 = o1.getValue();
+      FileMetadata fm2 = o2.getValue();
+      if (desc) {
+        return fm1.getName().compareTo(fm2.getName());
+      } else {
+        return fm2.getName().compareTo(fm1.getName());
+      }
+    });
+    Map<String, FileMetadata> sortedMap = new LinkedHashMap<>();
+    for(Map.Entry<String, FileMetadata> entry : arrayList) {
+      sortedMap.put(entry.getKey(), entry.getValue());
+    }
+    return sortedMap;
+  }
 
+  public Map<String, FileMetadata> sortFilesByCreatedDate(Map<String, FileMetadata> hashMap, boolean desc) {
+    List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
+    arrayList.sort((o1, o2) -> {
+      FileMetadata fm1 = o1.getValue();
+      FileMetadata fm2 = o2.getValue();
+      if (desc) {
+        return fm2.getCreatedDate().compareTo(fm1.getCreatedDate());
+      } else {
+        return fm1.getCreatedDate().compareTo(fm2.getCreatedDate());
+      }
+    });
+    Map<String, FileMetadata> sortedMap = new LinkedHashMap<>();
+    for(Map.Entry<String, FileMetadata> entry : arrayList) {
+      sortedMap.put(entry.getKey(), entry.getValue());
+    }
+    return sortedMap;
+  }
+
+  public Map<String, FileMetadata> sortFilesBySize(Map<String, FileMetadata> hashMap, boolean desc) {
+    List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
+    arrayList.sort((o1, o2) -> {
+      FileMetadata fm1 = o1.getValue();
+      FileMetadata fm2 = o2.getValue();
+      if (desc) {
+        return Long.compare(fm1.getSize(), fm2.getSize());
+      } else {
+        return Long.compare(fm2.getSize(), fm1.getSize());
+      }
+    });
+    Map<String, FileMetadata> sortedMap = new LinkedHashMap<>();
+    for(Map.Entry<String, FileMetadata> entry : arrayList) {
+      sortedMap.put(entry.getKey(), entry.getValue());
+    }
+    return sortedMap;
+  }
 
   public Configuration getConfiguration() {
     return configuration;
