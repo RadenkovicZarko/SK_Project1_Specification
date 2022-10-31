@@ -21,6 +21,13 @@ public class Configuration {
     //TODO - add configuration file (textual file)
   }
 
-
-
+  @Override
+  public String toString() {
+    StringBuilder ans = new StringBuilder();
+    ans.append(this.numberOfFiles).append("\n").append(this.size).append("\n");
+    for (String str1 : this.allowedExtensions) {
+      ans.append(str1).append(" ");
+    }
+    return ans.toString();
+  }
 }
