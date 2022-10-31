@@ -23,9 +23,9 @@ public abstract class StorageSpecification {
   {
     configuration.setAllowedExtensions(extensions);
   }
-  void setConfigurationNumberOfFiles(int numberOfFiles)
+  void setConfigurationNumberOfFilesInFolder(Map<String,Integer> map)
   {
-    configuration.setNumberOfFiles(numberOfFiles);
+    configuration.setNumberOfFilesInFolder(map);
   }
   abstract boolean setRootFolderPathInitialization(String path); // Da li je path root-a dobar
   abstract boolean createFolderOnSpecifiedPath(String path,String name);
