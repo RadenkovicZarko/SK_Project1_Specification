@@ -1,14 +1,13 @@
 public class SearchAttributes {
   // Show whole path in searching results, if not, only file name is showed
-  final static int wholePath = 1;
+  public final static int wholePath = 1;
 
   // Show file size
-  final static int fileSize = 2;
+  public final static int fileSize = 2;
 
   // Show date of creation
-  final static int createdDate = 4;
+  public final static int createdDate = 4;
 
   // Show date of modification
-  final static int modificationDate = 8;
-
+  public final static int modificationDate = 8;
 }

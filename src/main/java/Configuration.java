@@ -18,7 +18,6 @@ public class Configuration {
     this.allowedExtensions = new ArrayList<>();
     this.size = 10000;
     this.numberOfFiles = 10;
-    //TODO - add configuration file (textual file)
   }
 
   @Override
