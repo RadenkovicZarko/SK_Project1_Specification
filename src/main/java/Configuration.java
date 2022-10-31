@@ -26,6 +26,7 @@ public class Configuration {
     for (String str1 : this.allowedExtensions) {
       ans.append(str1).append(" ");
     }
+    ans.append("\n");
     for(Map.Entry<String,Integer> e:numberOfFilesInFolder.entrySet())
     {
       ans.append(e.getKey()).append(" ").append(e.getValue()).append("\n");
