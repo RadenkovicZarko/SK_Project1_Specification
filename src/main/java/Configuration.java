@@ -16,7 +16,7 @@ public class Configuration {
   // Default configuration
   public Configuration() {
     this.allowedExtensions = new ArrayList<>();
-    this.size = 1000;
+    this.size = 10000;
     this.numberOfFiles = 10;
     //TODO - add configuration file (textual file)
   }
