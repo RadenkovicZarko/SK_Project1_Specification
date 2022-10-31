@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.*;
 
 import lombok.Getter;
@@ -135,11 +136,11 @@ public abstract class StorageSpecification {
   }
 
   public void setDateAttribute() {
-    this.searchAttributes |= (SearchAttributes.date);
+    this.searchAttributes |= (SearchAttributes.createdDate);
   }
 
   public void removeDateAttribute() {
-    this.searchAttributes &= ~(SearchAttributes.date);
+    this.searchAttributes &= ~(SearchAttributes.createdDate);
   }
 
   public void setModificationDateAttribute() {
@@ -148,5 +149,32 @@ public abstract class StorageSpecification {
 
   public void removeModificationDateAttribute() {
     this.searchAttributes &= ~(SearchAttributes.modificationDate);
+  }
+
+  public String returnStringForOutput(Map<String, FileMetadata> map)
+  {
+      StringBuilder stringBuilder=new StringBuilder();
+      for(Map.Entry<String , FileMetadata> e : map.entrySet())
+      {
+        stringBuilder.append(e.getKey()).append(" ");
+        if((this.searchAttributes & SearchAttributes.wholePath) != 0)
+        {
+          stringBuilder.append(e.getValue().getAbsolutePath()).append(" ");
+        }
+        if((this.searchAttributes & SearchAttributes.fileSize) != 0)
+        {
+          stringBuilder.append(e.getValue().getSize()).append(" ");
+        }
+        if((this.searchAttributes & SearchAttributes.createdDate) != 0)
+        {
+          stringBuilder.append(e.getValue().getCreatedDate()).append(" ");
+        }
+        if((this.searchAttributes & SearchAttributes.modificationDate) != 0)
+        {
+          stringBuilder.append(e.getValue().getModifiedDate()).append(" ");
+        }
+        stringBuilder.append("\n");
+      }
+      return stringBuilder.toString();
   }
 }

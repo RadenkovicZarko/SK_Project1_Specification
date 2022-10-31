@@ -6,7 +6,7 @@ public class SearchAttributes {
   final static int fileSize = 2;
 
   // Show date of creation
-  final static int date = 4;
+  final static int createdDate = 4;
 
   // Show date of modification
   final static int modificationDate = 8;
