@@ -8,7 +8,6 @@ import java.util.*;
 @Setter
 public class Configuration {
   private int size; // bytes
-  private int numberOfFiles;
   private List<String> allowedExtensions;
   private boolean isDefault;
   private Map<String,Integer> numberOfFilesInFolder; // String je relativna putanja, Integer je br fajlova.
@@ -17,17 +16,28 @@ public class Configuration {
   public Configuration() {
     this.allowedExtensions = new ArrayList<>();
     this.size = 10000;
-    this.numberOfFiles = 10;
     this.numberOfFilesInFolder=new HashMap<>();
   }
 
   @Override
   public String toString() {
     StringBuilder ans = new StringBuilder();
-    ans.append(this.numberOfFiles).append("\n").append(this.size).append("\n");
+    ans.append(this.size).append("\n");
     for (String str1 : this.allowedExtensions) {
       ans.append(str1).append(" ");
     }
+    for(Map.Entry<String,Integer> e:numberOfFilesInFolder.entrySet())
+    {
+      ans.append(e.getKey()).append(" ").append(e.getValue()).append("\n");
+    }
+
+
+    //20000
+    //.exe .pdf .jpg .png
+    //putanj1 5
+    //putanj2 10
+
+
     return ans.toString();
   }
 }
