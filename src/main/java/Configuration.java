@@ -1,8 +1,7 @@
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 @Getter
@@ -11,13 +10,15 @@ public class Configuration {
   private int size; // bytes
   private int numberOfFiles;
   private List<String> allowedExtensions;
-  private boolean isDefault; // is configuration default
+  private boolean isDefault;
+  private Map<String,Integer> numberOfFilesInFolder; // String je relativna putanja, Integer je br fajlova.
 
   // Default configuration
   public Configuration() {
     this.allowedExtensions = new ArrayList<>();
     this.size = 10000;
     this.numberOfFiles = 10;
+    this.numberOfFilesInFolder=new HashMap<>();
   }
 
   @Override
