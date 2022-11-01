@@ -28,7 +28,13 @@ public abstract class StorageSpecification {
     configuration.setNumberOfFilesInFolder(map);
   }
   abstract boolean setRootFolderPathInitialization(String path); // Da li je path root-a dobar
-  abstract boolean createFolderOnSpecifiedPath(String path,String name);
+
+  /**
+   * @param path relative path of a folder
+   * @param name name of the folder
+   * @return is folder creation successful
+   */
+  abstract boolean createFolderOnSpecifiedPath(String path, String name);
   abstract boolean putFilesOnSpecifiedPath(List<String> listFiles, String path); //Proslede se putanje od fajlova i onda se u implementaciji proveravaju i traze ti fajlovi
   abstract void deleteFileOrDirectory(String path);
   abstract boolean moveFileFromDirectoryToAnother(String filePath,String pathTo); //Putanja fajla i putanja do drugog foldera u koji treba da se sacuva
