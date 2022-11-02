@@ -7,14 +7,14 @@ import java.util.*;
 @Getter
 @Setter
 public class Configuration {
-  private int size; // bytes
-  private List<String> allowedExtensions;
+  private int size; // total size of storage in bytes
+  private List<String> forbiddenExtensions;
   private boolean isDefault;
   private Map<String,Integer> numberOfFilesInFolder; // String je relativna putanja, Integer je br fajlova.
 
   // Default configuration
   public Configuration() {
-    this.allowedExtensions = new ArrayList<>();
+    this.forbiddenExtensions = new ArrayList<>();
     this.size = 10000;
     this.numberOfFilesInFolder=new HashMap<>();
   }
@@ -23,7 +23,7 @@ public class Configuration {
   public String toString() {
     StringBuilder ans = new StringBuilder();
     ans.append(this.size).append("\n");
-    for (String str1 : this.allowedExtensions) {
+    for (String str1 : this.forbiddenExtensions) {
       ans.append(str1).append(" ");
     }
     ans.append("\n");

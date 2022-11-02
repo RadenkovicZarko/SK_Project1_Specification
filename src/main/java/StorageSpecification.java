@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.*;
 
 import lombok.Getter;
@@ -21,7 +20,7 @@ public abstract class StorageSpecification {
   }
   void setConfigurationExtensions(List<String> extensions)
   {
-    configuration.setAllowedExtensions(extensions);
+    configuration.setForbiddenExtensions(extensions);
   }
   void setConfigurationNumberOfFilesInFolder(Map<String,Integer> map)
   {
