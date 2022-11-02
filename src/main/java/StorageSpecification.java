@@ -52,6 +52,8 @@ public abstract class StorageSpecification {
 
   abstract Map<String,FileMetadata> returnCreatedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
   abstract Map<String,FileMetadata> returnModifiedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
+  abstract Map<String,FileMetadata> returnModifiedFilesFromDate(String pathToDirectory, Date fromDate);
+  abstract Map<String,FileMetadata> returnModifiedFilesBeforeDate(String pathToDirectory,  Date toDate);
 
   public Map<String, FileMetadata> sortFilesByName(Map<String, FileMetadata> hashMap, boolean desc) {
     List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
