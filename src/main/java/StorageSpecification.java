@@ -26,7 +26,7 @@ public abstract class StorageSpecification {
   {
     configuration.setNumberOfFilesInFolder(map);
   }
-  abstract boolean setRootFolderPathInitialization(String path); // Da li je path root-a dobar
+  abstract void setRootFolderPathInitialization(String path); // Da li je path root-a dobar
 
   /**
    * @param path relative path of a folder
