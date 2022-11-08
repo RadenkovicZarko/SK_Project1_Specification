@@ -12,7 +12,7 @@ public abstract class StorageSpecification {
   private String rootFolderPath="";
   private int searchAttributes=SearchAttributes.wholePath;
 
-  abstract boolean createRootFolder();
+  abstract void createRootFolder();
 
   void setConfigurationSizeOfStorage(int size)
   {

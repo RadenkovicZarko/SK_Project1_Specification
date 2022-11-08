@@ -5,10 +5,14 @@ public class StorageManager {
     storage = st;
   }
 
-  public static StorageSpecification getStorage(String path) {
-    if (StorageManager.storage != null) {
-      StorageManager.storage.setRootFolderPath(path);
-    }
+//  public static StorageSpecification getStorage(String path) {
+//    if (StorageManager.storage != null) {
+//      StorageManager.storage.setRootFolderPath(path);
+//    }
+//    return StorageManager.storage;
+//  }
+
+  public static StorageSpecification getStorage() {
     return StorageManager.storage;
   }
 }
