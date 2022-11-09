@@ -8,4 +8,9 @@ public class MyException extends RuntimeException {
   public MyException(String message, boolean successful) {
     this.message = message;
   }
+
+  @Override
+  public String getMessage() {
+    return message;
+  }
 }
