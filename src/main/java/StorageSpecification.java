@@ -60,6 +60,8 @@ public abstract class StorageSpecification {
   abstract Map<String,FileMetadata> returnModifiedFilesFromDate(String pathToDirectory, Date fromDate);
   abstract Map<String,FileMetadata> returnModifiedFilesBeforeDate(String pathToDirectory,  Date toDate);
 
+  abstract void addLimitForFolder(String path, int number);
+
   public Map<String, FileMetadata> sortFilesByName(Map<String, FileMetadata> hashMap, boolean desc) {
     List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
     arrayList.sort((o1, o2) -> {
