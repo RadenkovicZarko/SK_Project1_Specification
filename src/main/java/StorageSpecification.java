@@ -86,30 +86,126 @@ public abstract class StorageSpecification {
   /**
    * Returns files from storage
    * @param path relative path of a storage file/directory
-   * @return Files from directory and file metadata
+   * @return Files from directory and metadata
    */
   abstract Map<String,FileMetadata> filesFromDirectory(String path);
+  /**
+   * Returns files from children directories in storage directory
+   * @param path relative path of a storage file/directory
+   * @return Files from children directories and metadata
+   */
   abstract Map<String,FileMetadata> filesFromChildrenDirectory(String path);
+
+  /**
+   * Returns all files from storage directory and subdirectories
+   * @param path relative path of a storage file/directory
+   * @return Files from directory and subdirectories and metadata
+   */
   abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
 
+  /**
+   * Returns files from storage with allowed extensions
+   * @param path relative path of a storage file/directory
+   * @param extensions allowed extensions
+   * @return Files from directory and metadata
+   */
   abstract Map<String,FileMetadata> filesFromDirectoryExt(String path, List<String> extensions);
+  /**
+   * Returns files from children directories in storage directory with allowed extensions
+   * @param path relative path of a storage file/directory
+   * @param extensions allowed extensions
+   * @return Files from children directories and metadata
+   */
   abstract Map<String,FileMetadata> filesFromChildrenDirectoryExt(String path,List<String> extensions);
+  /**
+   * Returns all files from storage directory and subdirectories
+   * @param path relative path of a storage file/directory
+   * @param extensions allowed extensions
+   * @return Files from directory and subdirectories and metadata
+   */
   abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectoryExt(String path,List<String> extensions);
 
+  /**
+   * Returns files from storage that contain substring
+   * @param path relative path of a storage file/directory
+   * @param substring substring
+   * @return Files from directory and metadata
+   */
   abstract Map<String,FileMetadata> filesFromDirectorySubstring(String path,String substring);
+  /**
+   * Returns files from children directories in storage directory that contain substring
+   * @param path relative path of a storage file/directory
+   * @param substring substring
+   * @return Files from children directories and metadata
+   */
   abstract Map<String,FileMetadata> filesFromChildrenDirectorySubstring(String path,String substring);
+  /**
+   * Returns all files from storage directory and subdirectories that contain substring
+   * @param path relative path of a storage file/directory
+   * @param substring substring
+   * @return Files from directory and subdirectories and metadata
+   */
   abstract Map<String,FileMetadata> filesFromDirectoryAndSubdirectorySubstring(String path,String substring);
 
-  abstract String doesDirectoryContainFiles(String path,List<String> namesOfFiles); // Vraca null ukoliko nije dobar path, vraca "Ne postoji takvi fajlovi u ovom folderu", vraca "Postoje fajlovi: test.txt image.jpg"
+  /**
+   * Checks does directory contain specified files
+   * @param path relative path of a storage file/directory
+   * @param namesOfFiles list of names of files
+   * @return null if path is invalid, otherwise it returns valid files or reports that there is no such files
+   */
+  abstract String doesDirectoryContainFiles(String path,List<String> namesOfFiles);
+  /**
+   * Returns relative path of a folder where file is located
+   * @param fileName name of file to be searched
+   * @return relative path of a folder containing a file
+   */
   abstract String folderNameByFileName(String fileName);
 
+  /**
+   * Returns list of files created in date interval
+   * @param pathToDirectory Relative path of a folder to be searched
+   * @param fromDate starting date
+   * @param toDate ending date
+   * @return list of files in given date interval
+   */
   abstract Map<String,FileMetadata> returnCreatedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
+  /**
+   * Returns list of files modified in date interval
+   * @param pathToDirectory Relative path of a folder to be searched
+   * @param fromDate starting date
+   * @param toDate ending date
+   * @return list of files in given date interval
+   */
   abstract Map<String,FileMetadata> returnModifiedFilesInDateInterval(String pathToDirectory, Date fromDate, Date toDate);
+  /**
+   * Returns list of files modified after given date
+   * @param pathToDirectory Relative path of a folder to be searched
+   * @param fromDate starting date
+   * @return list of files in given date interval
+   */
   abstract Map<String,FileMetadata> returnModifiedFilesFromDate(String pathToDirectory, Date fromDate);
+  /**
+   * Returns list of files modified before given date
+   * @param pathToDirectory Relative path of a folder to be searched
+   * @param toDate ending date
+   * @return list of files in given date interval
+   */
   abstract Map<String,FileMetadata> returnModifiedFilesBeforeDate(String pathToDirectory,  Date toDate);
 
+  /**
+   * Sets limit of files for new folder in configuration file
+   * @param path Relative path of a folder
+   * @param number file size
+   * @return list of files in given date interval
+   */
   abstract void addLimitForFolder(String path, int number);
 
+  /**
+   * Sorts file by file name
+   * @param hashMap file names and metadata
+   * @param desc descending order
+   * @return sorted files
+   */
   public Map<String, FileMetadata> sortFilesByName(Map<String, FileMetadata> hashMap, boolean desc) {
     List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
     arrayList.sort((o1, o2) -> {
@@ -128,6 +224,12 @@ public abstract class StorageSpecification {
     return sortedMap;
   }
 
+  /**
+   * Sorts file by created date
+   * @param hashMap file names and metadata
+   * @param desc descending order
+   * @return sorted files
+   */
   public Map<String, FileMetadata> sortFilesByCreatedDate(Map<String, FileMetadata> hashMap, boolean desc) {
     List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
     arrayList.sort((o1, o2) -> {
@@ -146,6 +248,12 @@ public abstract class StorageSpecification {
     return sortedMap;
   }
 
+  /**
+   * Sorts file by file size
+   * @param hashMap file names and metadata
+   * @param desc descending order
+   * @return sorted files
+   */
   public Map<String, FileMetadata> sortFilesBySize(Map<String, FileMetadata> hashMap, boolean desc) {
     List<Map.Entry<String, FileMetadata>> arrayList = new ArrayList<>(hashMap.entrySet());
     arrayList.sort((o1, o2) -> {
@@ -176,38 +284,67 @@ public abstract class StorageSpecification {
     this.rootFolderPath = rootFolderPath;
   }
 
+  /**
+   * Sets whole path attribute in output string
+   */
   public void setWholePathAttribute() {
     this.searchAttributes |= (SearchAttributes.wholePath);
   }
 
+  /**
+   * Removes whole path attribute in output string
+   */
   public void removeWholePathAttribute() {
     this.searchAttributes &= ~(SearchAttributes.wholePath);
   }
 
+  /**
+   * Sets file size attribute in output string
+   */
   public void setFileSizeAttribute() {
     this.searchAttributes |= (SearchAttributes.fileSize);
   }
 
+  /**
+   * Removes file size attribute in output string
+   */
   public void removeFileSizeAttribute() {
     this.searchAttributes &= ~(SearchAttributes.fileSize);
   }
 
+  /**
+   * Sets created date attribute in output string
+   */
   public void setDateAttribute() {
     this.searchAttributes |= (SearchAttributes.createdDate);
   }
 
+  /**
+   * Removes created date attribute in output string
+   */
   public void removeDateAttribute() {
     this.searchAttributes &= ~(SearchAttributes.createdDate);
   }
 
+  /**
+   * Sets modification date attribute in output string
+   */
   public void setModificationDateAttribute() {
     this.searchAttributes |= (SearchAttributes.modificationDate);
   }
 
+  /**
+   * Removes modification date attribute in output string
+   */
   public void removeModificationDateAttribute() {
     this.searchAttributes &= ~(SearchAttributes.modificationDate);
   }
 
+  /**
+   * Returns string for files output
+   * @param map file names and metadata
+   * @return output string
+   */
   public String returnStringForOutput(Map<String, FileMetadata> map)
   {
       StringBuilder stringBuilder=new StringBuilder();
