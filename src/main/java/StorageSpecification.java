@@ -12,34 +12,82 @@ public abstract class StorageSpecification {
   private String rootFolderPath="";
   private int searchAttributes=SearchAttributes.wholePath;
 
+  /**
+   * Creates root folder and sets root path
+   */
   abstract void createRootFolder();
 
+  /**
+   * Sets size of storage in configuration file
+   * @param size Size of a storage in bytes
+   */
   void setConfigurationSizeOfStorage(int size)
   {
     configuration.setSize(size);
   }
+  /**
+   * Sets extensions in configuration file
+   * @param extensions List of forbidden extensions
+   */
   void setConfigurationExtensions(List<String> extensions)
   {
     configuration.setForbiddenExtensions(extensions);
   }
+  /**
+   * Sets number of files for each folder in configuration file
+   * @param map map of pairs (file name, file size)
+   */
   void setConfigurationNumberOfFilesInFolder(Map<String,Integer> map)
   {
     configuration.setNumberOfFilesInFolder(map);
   }
-  abstract void setRootFolderPathInitialization(String path); // Da li je path root-a dobar
+  /**
+   * Checks if root folder path is valid
+   * @param path Root folder path
+   */
+  abstract void setRootFolderPathInitialization(String path);
 
   /**
-   * @param path relative path of a folder
+   * Creates a new folder inside storage
+   * @param path relative path where folder is created
    * @param name name of the folder
-   * @return is folder creation successful
    */
   abstract void createFolderOnSpecifiedPath(String path, String name);
+  /**
+   * Uploads files in storage
+   * @param listFiles list of full paths of local files
+   * @param path relative path of a storage folder
+   */
   abstract void putFilesOnSpecifiedPath(List<String> listFiles, String path); //Proslede se putanje od fajlova i onda se u implementaciji proveravaju i traze ti fajlovi
+  /**
+   * Deletes a file or a directory in storage
+   * @param path relative path of a file/directory to be deleted
+   */
   abstract void deleteFileOrDirectory(String path);
+  /**
+   * Moves file inside storage between folders
+   * @param filePath relative path of a source folder
+   * @param pathTo relative path of a destination folder
+   */
   abstract void moveFileFromDirectoryToAnother(String filePath,String pathTo); //Putanja fajla i putanja do drugog foldera u koji treba da se sacuva
+  /**
+   * Downloads file from storage to local folder
+   * @param pathFrom relative path of a storage file/directory
+   * @param pathTo full path of destination local folder
+   */
   abstract void downloadFileOrDirectory(String pathFrom,String pathTo);
+  /**
+   * Renames file or directory in storage
+   * @param path relative path of a storage
+   * @param nameAfter new name
+   */
   abstract void renameFileOrDirectory(String path,String nameAfter);
 
+  /**
+   * Returns files from storage
+   * @param path relative path of a storage file/directory
+   * @return Files from directory and file metadata
+   */
   abstract Map<String,FileMetadata> filesFromDirectory(String path);
   abstract Map<String,FileMetadata> filesFromChildrenDirectory(String path);
   abstract Map<String,FileMetadata> allFilesFromDirectoryAndSubdirectory(String path);
