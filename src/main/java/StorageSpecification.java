@@ -371,4 +371,11 @@ public abstract class StorageSpecification {
       }
       return stringBuilder.toString();
   }
+
+  /**
+   * Provides different ways of files creation
+   * @param input input string
+   * @param path folder path
+   */
+  public abstract void mkdirCreateFiles(String input, String path);
 }
