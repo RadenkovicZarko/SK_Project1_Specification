@@ -1,9 +1,9 @@
-Storage Management Library
+# Storage Management Library
 
 Overview
 The Storage Management Library is a Java-based project designed to facilitate operations on file storage systems. It allows users to perform a variety of operations such as creating directories, uploading files, and searching through storage with ease. The library is built with flexibility in mind, supporting both local file systems and remote storage solutions like Google Drive.
 
-Features
+# Features
 
 Creation and configuration of storage directories
 Uploading, downloading, deleting, and moving files
@@ -14,15 +14,15 @@ Two separate implementations for local and Google Drive storage
 This repository is just specification. Two implementations are in repositories: SK_Project1_GoogleDriveImplementation, SK_Project1_LocalStorageImplementation
 
 
-Getting Started
+# Getting Started
 
-Prerequisites
+## Prerequisites
 Java 11 or later
 Maven or Gradle (for dependency management)
 Access to Google Drive API (for the Google Drive implementation)
 
 
-Building from Source
+## Building from Source
 To build the Storage Management Library from source and install it on your local machine, follow these steps:
 
 1.Clone the repository to your local machine
@@ -41,7 +41,7 @@ After successfully building and installing the project, you can include it as a 
 
 
 
-Testing
+# Testing
 To test the Storage Management Library, you will need to download and install two additional repositories, along with the test repository. Follow the steps below to set up your environment for testing.
 
 Step 1: Clone the Repositories
