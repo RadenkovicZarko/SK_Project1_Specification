@@ -7,10 +7,10 @@ import java.util.*;
 @Getter
 @Setter
 public class Configuration {
-  private int size; // total size of storage in bytes
+  private int size;
   private List<String> forbiddenExtensions;
   private boolean isDefault;
-  private Map<String,Integer> numberOfFilesInFolder; // String je relativna putanja, Integer je br fajlova.
+  private Map<String,Integer> numberOfFilesInFolder;
 
   // Default configuration
   public Configuration() {
@@ -31,13 +31,6 @@ public class Configuration {
     {
       ans.append(e.getKey()).append(" ").append(e.getValue()).append("\n");
     }
-
-
-    //20000
-    //.exe .pdf .jpg .png
-    //putanj1 5
-    //putanj2 10
-
 
     return ans.toString();
   }
