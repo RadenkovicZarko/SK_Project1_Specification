@@ -51,6 +51,8 @@ Step 2: Install the Projects
 Navigate to each cloned repository's root directory and run the Maven install command. This will compile the projects and install them to your local Maven repository, making them available as dependencies.
 Command for all three repositories (SK_Project1_Specification, SK_Project1_GoogleDriveImplementation, SK_Project1_LocalStorageImplementation) is mvn clean install
 
+Step 3: Run main in project SK_Project1_TestApk
+
 
 
 
